@@ -2905,6 +2905,22 @@
   dependencies:
     which "^3.0.0"
 
+"@orderly.network/affiliate@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@orderly.network/affiliate/-/affiliate-2.2.0.tgz#91519a842753aa9c17ecd4ebc47360effdfe0397"
+  integrity sha512-He+OyYcRsHXFN+FBrqZXTpq1gPqEbN6sdAKeBEYOtnZ6GK8r1uOkrMLCSGEUNcmZf9XY/9q3RCygCdD2r495nw==
+  dependencies:
+    "@orderly.network/chart" "2.2.0"
+    "@orderly.network/hooks" "2.2.0"
+    "@orderly.network/i18n" "2.2.0"
+    "@orderly.network/react-app" "2.2.0"
+    "@orderly.network/types" "2.2.0"
+    "@orderly.network/ui" "2.2.0"
+    "@orderly.network/ui-connector" "2.2.0"
+    "@orderly.network/ui-scaffold" "2.2.0"
+    "@orderly.network/utils" "2.2.0"
+    date-fns "^3.6.0"
+
 "@orderly.network/chart@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@orderly.network/chart/-/chart-2.2.0.tgz#64d1ae66d17d29f92ff016b4c41561c9413a0d67"
@@ -3069,6 +3085,21 @@
     "@orderly.network/utils" "2.2.0"
     date-fns "^3.6.0"
     embla-carousel-react "^8.2.0"
+
+"@orderly.network/trading-rewards@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@orderly.network/trading-rewards/-/trading-rewards-2.2.0.tgz#9f719d74aa2288749e71ad400ad0de2f4c6ad622"
+  integrity sha512-yrMHzBp4Fa+akYCFxiXVAAXCFNKOe0SGGaQw1Ij6lz0nuMmQebi7ErKjknV5OR+suiF0wFX5b1wgjuab4LHYEg==
+  dependencies:
+    "@orderly.network/hooks" "2.2.0"
+    "@orderly.network/i18n" "2.2.0"
+    "@orderly.network/react-app" "2.2.0"
+    "@orderly.network/types" "2.2.0"
+    "@orderly.network/ui" "2.2.0"
+    "@orderly.network/ui-connector" "2.2.0"
+    "@orderly.network/ui-scaffold" "2.2.0"
+    "@orderly.network/utils" "2.2.0"
+    date-fns "^3.6.0"
 
 "@orderly.network/trading@2.2.0":
   version "2.2.0"

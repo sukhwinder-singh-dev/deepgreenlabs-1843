@@ -29,6 +29,7 @@ const ALL_MENU_ITEMS: MainNavItem[] = [
   { name: "Trading", href: "/" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Markets", href: "/markets" },
+  { name: "Rewards", href: "/rewards" },
   { name: "Leaderboard", href: "/leaderboard" },
 ];
 
@@ -37,6 +38,8 @@ const DEFAULT_ENABLED_MENUS: MainNavItem[] = [
   { name: "Trading", href: "/" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Markets", href: "/markets" },
+  { name: "Rewards", href: "/rewards" },
+  { name: "Leaderboard", href: "/leaderboard" },
 ];
 
 const getCustomMenuItems = (): MainNavItem[] => {
