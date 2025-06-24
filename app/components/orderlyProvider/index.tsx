@@ -3,6 +3,7 @@ import { OrderlyAppProvider } from "@orderly.network/react-app";
 import { useOrderlyConfig } from "@/utils/config";
 import type { NetworkId } from "@orderly.network/types";
 import { LocaleProvider, Resources, defaultLanguages } from "@orderly.network/i18n";
+import { getSEOConfig, getUserLanguage } from "@/utils/seo";
 
 const NETWORK_ID_KEY = "orderly_network_id";
 
@@ -27,6 +28,41 @@ const setNetworkId = (networkId: NetworkId) => {
 	if (typeof window !== "undefined") {
 		localStorage.setItem(NETWORK_ID_KEY, networkId);
 	}
+};
+
+const removeLangParamFromUrl = () => {
+	if (typeof window !== 'undefined') {
+		const url = new URL(window.location.href);
+		if (url.searchParams.has('lang')) {
+			url.searchParams.delete('lang');
+			window.history.replaceState({}, '', url.toString());
+		}
+	}
+};
+
+const getDefaultLanguage = (): string => {
+	const seoConfig = getSEOConfig();
+	const userLanguage = getUserLanguage();
+	const availableLanguages = import.meta.env.VITE_AVAILABLE_LANGUAGES?.split(',').map((code: string) => code.trim()) || ['en'];
+	
+	if (typeof window !== 'undefined') {
+		const urlParams = new URLSearchParams(window.location.search);
+		const langParam = urlParams.get('lang');
+		if (langParam && availableLanguages.includes(langParam)) {
+			setTimeout(removeLangParamFromUrl, 0);
+			return langParam;
+		}
+	}
+	
+	if (seoConfig.language && availableLanguages.includes(seoConfig.language)) {
+		return seoConfig.language;
+	}
+	
+	if (availableLanguages.includes(userLanguage)) {
+		return userLanguage;
+	}
+	
+	return availableLanguages[0] || 'en';
 };
 
 const PrivyConnector = lazy(() => import("@/components/orderlyProvider/privyConnector"));
@@ -64,11 +100,14 @@ const LocaleProviderWithLanguages = lazy(async () => {
 		languageCodes.some((code: string) => code.trim() === lang.localCode)
 	);
 
+	const defaultLanguage = getDefaultLanguage();
+
 	return {
 		default: ({ children }: { children: ReactNode }) => (
 			<LocaleProvider
 				resources={resources}
 				languages={languages}
+				locale={defaultLanguage}
 			>
 				{children}
 			</LocaleProvider>
