@@ -71,20 +71,22 @@ const WalletConnector = lazy(() => import("@/components/orderlyProvider/walletCo
 const LocaleProviderWithLanguages = lazy(async () => {
 	const languageCodes = import.meta.env.VITE_AVAILABLE_LANGUAGES?.split(',') || ['en'];
 	
-	const languagePromises = languageCodes.map(async (code: string) => {
-		const trimmedCode = code.trim();
-		try {
-			const response = await fetch(`${import.meta.env.VITE_BASE_URL ?? ''}/locales/${trimmedCode}.json`);
-			if (!response.ok) {
-				throw new Error(`Failed to fetch ${trimmedCode}.json: ${response.status}`);
+	const languagePromises = languageCodes
+		.map((code: string) => code.trim())
+		.filter((code: string) => code.length > 0)
+		.map(async (code: string) => {
+			try {
+				const response = await fetch(`${import.meta.env.VITE_BASE_URL ?? ''}/locales/${code}.json`);
+				if (!response.ok) {
+					throw new Error(`Failed to fetch ${code}.json: ${response.status}`);
+				}
+				const data = await response.json();
+				return { code, data };
+			} catch (error) {
+				console.error(`Failed to load language: ${code}`, error);
+				return null;
 			}
-			const data = await response.json();
-			return { code: trimmedCode, data };
-		} catch (error) {
-			console.error(`Failed to load language: ${trimmedCode}`, error);
-			return null;
-		}
-	});
+		});
 	
 	const results = await Promise.all(languagePromises);
 	
