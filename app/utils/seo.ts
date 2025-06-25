@@ -1,5 +1,3 @@
-import { withBasePath } from "./base-path";
-
 export interface SEOConfig {
   siteName?: string;
   siteDescription?: string;
@@ -128,10 +126,10 @@ export function getPageMeta(): (MetaTag | LinkTag)[] {
   const fullTitle = siteName;
   const fullUrl = siteUrl || "";
 
-  let metaImage = withBasePath("/logo.webp");
+  let metaImage;
   if (siteUrl) {
     const baseUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
-    metaImage = `${baseUrl}${withBasePath("/logo.webp")}`;
+    metaImage = `${baseUrl}/logo.webp`;
   }
 
   const metaKeywords = config.keywords;
@@ -165,9 +163,11 @@ export function getPageMeta(): (MetaTag | LinkTag)[] {
 
     tags.push(
       { property: "og:type", content: "website" },
-      { property: "og:url", content: fullUrl },
-      { property: "og:image", content: metaImage }
+      { property: "og:url", content: fullUrl }
     );
+    if (metaImage) {
+      tags.push({ property: "og:image", content: metaImage });
+    }
 
     if (siteDescription) {
       tags.push({ property: "og:description", content: siteDescription });
@@ -193,7 +193,7 @@ export function getPageMeta(): (MetaTag | LinkTag)[] {
       tags.push({ name: "twitter:site", content: config.twitterHandle });
     }
 
-    if (siteUrl) {
+    if (metaImage) {
       tags.push({ name: "twitter:image", content: metaImage });
     }
   }
