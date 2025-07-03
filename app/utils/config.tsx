@@ -5,7 +5,7 @@ import { BottomNavProps, FooterProps, MainNavWidgetProps } from "@orderly.networ
 import { AppLogos } from "@orderly.network/react-app";
 import { OrderlyActiveIcon, OrderlyIcon } from "../components/icons/orderly";
 import { withBasePath } from "./base-path";
-import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon } from "@orderly.network/ui";
+import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon, MarketsActiveIcon, MarketsInactiveIcon } from "@orderly.network/ui";
 
 interface MainNavItem {
   name: string;
@@ -154,6 +154,8 @@ const getBottomNavIcon = (menuName: string) => {
       return { activeIcon: <PortfolioActiveIcon />, inactiveIcon: <PortfolioInactiveIcon /> };
     case "Leaderboard":
       return { activeIcon: <LeaderboardActiveIcon />, inactiveIcon: <LeaderboardInactiveIcon /> };
+    case "Markets":
+      return { activeIcon: <MarketsActiveIcon />, inactiveIcon: <MarketsInactiveIcon /> };
     default:
       throw new Error(`Unsupported menu name: ${menuName}`);
   }
@@ -189,7 +191,7 @@ export const useOrderlyConfig = () => {
     
     const allMenuItems = [...translatedEnabledMenus, ...customMenus];
     
-    const supportedBottomNavMenus = ["Trading", "Portfolio", "Leaderboard"];
+    const supportedBottomNavMenus = ["Trading", "Portfolio", "Markets", "Leaderboard"];
     const bottomNavMenus = enabledMenus
       .filter(menu => supportedBottomNavMenus.includes(menu.name))
       .map(menu => {
