@@ -8,7 +8,6 @@ export const meta: MetaFunction = () => {
 
 export default function AffiliatePage() {
   return (
-    <div className="oui-py-6 oui-px-4 lg:oui-px-6 xl:oui-pl-4 lx:oui-pr-6">
       <ReferralProvider
         becomeAnAffiliateUrl="https://orderly.network"
         learnAffiliateUrl="https://orderly.network"
@@ -16,6 +15,5 @@ export default function AffiliatePage() {
       >
         <Dashboard.AffiliatePage />
       </ReferralProvider>
-    </div>
   );
 }

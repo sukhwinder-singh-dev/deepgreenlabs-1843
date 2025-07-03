@@ -7,7 +7,7 @@ import {
 } from "@orderly.network/ui-scaffold";
 import { Outlet, useLocation } from "@remix-run/react";
 
-import config from "@/utils/config";
+import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
 
 const LeftSidebar = (props: ScaffoldProps) => {
@@ -40,6 +40,8 @@ const LeftSidebar = (props: ScaffoldProps) => {
 
 export default function RewardsPage() {
   const { onRouteChange } = useNav();
+  const config = useOrderlyConfig();
+
   return (
     <Scaffold
       classNames={{
@@ -57,6 +59,7 @@ export default function RewardsPage() {
       routerAdapter={{
         onRouteChange,
       }}
+      bottomNavProps={config.scaffold.bottomNavProps}
     >
       <Outlet />
     </Scaffold>
