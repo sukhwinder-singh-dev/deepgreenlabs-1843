@@ -203,34 +203,39 @@ export const useOrderlyConfig = () => {
       })
       .filter(menu => menu.activeIcon && menu.inactiveIcon);
 
+    const mainNavProps: MainNavWidgetProps = {
+      initialMenu: "/",
+      mainMenus: allMenuItems,
+    };
+
+    if (import.meta.env.VITE_ENABLE_CAMPAIGNS === "true") {
+      mainNavProps.campaigns = {
+        name: "$ORDER",
+        href: "/rewards",
+        children: [
+          {
+            name: t("common.tradingRewards"),
+            href: "https://app.orderly.network/tradingRewards",
+            description: t("extend.tradingRewards.description"),
+            icon: <OrderlyIcon size={14} />,
+            activeIcon: <OrderlyActiveIcon size={14} />,
+            target: "_blank",
+          },
+          {
+            name: t("extend.staking"),
+            href: "https://app.orderly.network/staking",
+            description: t("extend.staking.description"),
+            icon: <OrderlyIcon size={14} />,
+            activeIcon: <OrderlyActiveIcon size={14} />,
+            target: "_blank",
+          },
+        ],
+      };
+    }
+
     return {
       scaffold: {
-        mainNavProps: {
-          initialMenu: "/",
-          mainMenus: allMenuItems,
-          campaigns: {
-            name: t("tradingRewards.rewards"),
-            href: "/rewards",
-            children: [
-              {
-                name: t("common.tradingRewards"),
-                href: "https://app.orderly.network/tradingRewards",
-                description: t("extend.tradingRewards.description"),
-                icon: <OrderlyIcon size={14} />,
-                activeIcon: <OrderlyActiveIcon size={14} />,
-                target: "_blank",
-              },
-              {
-                name: t("extend.staking"),
-                href: "https://app.orderly.network/staking",
-                description: t("extend.staking.description"),
-                icon: <OrderlyIcon size={14} />,
-                activeIcon: <OrderlyActiveIcon size={14} />,
-                target: "_blank",
-              },
-            ],
-          },
-        },
+        mainNavProps,
         bottomNavProps: {
           mainMenus: bottomNavMenus,
         },
