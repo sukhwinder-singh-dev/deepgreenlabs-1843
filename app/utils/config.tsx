@@ -41,7 +41,7 @@ const ALL_MENU_ITEMS = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
-  // { name: "Rewards", href: "/rewards", translationKey: "tradingRewards.rewards" },
+  { name: "Rewards", href: "/rewards", translationKey: "tradingRewards.rewards" },
   { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
 ];
 
@@ -50,7 +50,6 @@ const DEFAULT_ENABLED_MENUS = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
-  // { name: "Rewards", href: "/rewards", translationKey: "tradingRewards.rewards" },
   { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
 ];
 
