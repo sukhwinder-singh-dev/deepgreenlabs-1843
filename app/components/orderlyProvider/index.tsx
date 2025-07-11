@@ -32,7 +32,11 @@ const setNetworkId = (networkId: NetworkId) => {
 };
 
 const getAvailableLanguages = (): string[] => {
-	return import.meta.env.VITE_AVAILABLE_LANGUAGES?.split(',').map((code: string) => code.trim()) || ['en'];
+	const languages = import.meta.env.VITE_AVAILABLE_LANGUAGES?.split(',')
+		.map((code: string) => code.trim())
+		.filter((code: string) => code.length > 0) || [];
+	
+	return languages.length > 0 ? languages : ['en'];
 };
 
 const getDefaultLanguage = (): LocaleCode => {
