@@ -113,6 +113,13 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 			.filter(chain => !isNaN(chain.id));
 	};
 
+	const parseDefaultChain = (envVar: string | undefined): { mainnet: { id: number } } | undefined => {
+		if (!envVar) return undefined;
+		
+		const chainId = parseInt(envVar.trim(), 10);
+		return !isNaN(chainId) ? { mainnet: { id: chainId } } : undefined;
+	};
+
 	const disableMainnet = import.meta.env.VITE_DISABLE_MAINNET === 'true';
 	const mainnetChains = disableMainnet ? [] : parseChainIds(import.meta.env.VITE_ORDERLY_MAINNET_CHAINS);
 	const disableTestnet = import.meta.env.VITE_DISABLE_TESTNET === 'true';
@@ -122,6 +129,8 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 		...(mainnetChains && { mainnet: mainnetChains }),
 		...(testnetChains && { testnet: testnetChains })
 	} : undefined;
+
+	const defaultChain = parseDefaultChain(import.meta.env.VITE_DEFAULT_CHAIN);
 
 	useEffect(() => {
 		setIsClient(true);
@@ -186,6 +195,7 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 			appIcons={config.orderlyAppProvider.appIcons}
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			{...(chainFilter && { chainFilter } as any)}
+			defaultChain={defaultChain}
 		>
 			{props.children}
 		</OrderlyAppProvider>
