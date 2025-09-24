@@ -7,6 +7,8 @@ import { OrderlyActiveIcon, OrderlyIcon } from "../components/icons/orderly";
 import { withBasePath } from "./base-path";
 import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon, MarketsActiveIcon, MarketsInactiveIcon, useScreen, Flex, cn } from "@orderly.network/ui";
 import { getRuntimeConfig, getRuntimeConfigBoolean, getRuntimeConfigNumber } from "./runtime-config";
+import { Link } from "@remix-run/react";
+import CustomLeftNav from "@/components/CustomLeftNav";
 
 interface MainNavItem {
   name: string;
@@ -37,16 +39,15 @@ export type OrderlyConfig = {
   };
 };
 
-// All available menu items with translation keys
 const ALL_MENU_ITEMS = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
   { name: "Rewards", href: "/rewards", translationKey: "tradingRewards.rewards" },
   { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
+  { name: "Vaults", href: "/vaults", translationKey: "common.vaults" },
 ];
 
-// Default enabled menu items (excluding Leaderboard)
 const DEFAULT_ENABLED_MENUS = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
@@ -237,9 +238,17 @@ export const useOrderlyConfig = () => {
               "oui-overflow-hidden",
             )}
           >
-            {isMobile && getRuntimeConfigBoolean('VITE_HAS_PRIMARY_LOGO')
-              ? <img src={withBasePath("/logo.webp")} alt="logo" style={{ height: "42px" }} />
-              : components.title}
+            { isMobile && 
+              <CustomLeftNav
+                menus={translatedEnabledMenus}
+                externalLinks={customMenus}
+              />
+            }
+            <Link to="/">
+              {isMobile && getRuntimeConfigBoolean('VITE_HAS_SECONDARY_LOGO')
+                ? <img src={withBasePath("/logo-secondary.webp")} alt="logo" style={{ height: "32px" }} />
+                : components.title}
+            </Link>
             {components.mainNav}
           </Flex>
 
@@ -301,5 +310,5 @@ export const useOrderlyConfig = () => {
         },
       },
     };
-  }, [t]);
+  }, [t, isMobile]);
 };

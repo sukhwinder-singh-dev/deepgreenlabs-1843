@@ -3032,6 +3032,23 @@
     dayjs "^1.11.9"
     decimal.js-light "^2.5.1"
 
+"@orderly.network/vaults@2.7.3":
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/@orderly.network/vaults/-/vaults-2.7.3.tgz#8e2697a01827fa44d76b63a03fa467c819692a13"
+  integrity sha512-h+ju/2CWc1ilXFSKkp+MdgaZii06TzYhvVFW8i9Raw4P3puFUE5Afip8AiRgkwy/sfjRkBjEhfSGCXdt0SypEA==
+  dependencies:
+    "@orderly.network/hooks" "2.7.3"
+    "@orderly.network/i18n" "2.7.3"
+    "@orderly.network/react-app" "2.7.3"
+    "@orderly.network/types" "2.7.3"
+    "@orderly.network/ui" "2.7.3"
+    "@orderly.network/ui-connector" "2.7.3"
+    "@orderly.network/ui-transfer" "2.7.3"
+    "@orderly.network/utils" "2.7.3"
+    date-fns "^3.6.0"
+    ramda "^0.29.0"
+    zustand "^4.5.5"
+
 "@orderly.network/wallet-connector-privy@2.7.3":
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/@orderly.network/wallet-connector-privy/-/wallet-connector-privy-2.7.3.tgz#1bb4b2561e982000820703fa44311ead963fd114"
@@ -11918,6 +11935,11 @@ lru-queue@^0.1.0:
   integrity sha512-BpdYkt9EvGl8OfWHDQPISVpcl5xZthb+XPsbELj5AQXxIC8IriDZIQYjBJPEm5rS420sjZ0TLEzRcq5KdBhYrQ==
   dependencies:
     es5-ext "~0.10.2"
+
+lucide-react@^0.544.0:
+  version "0.544.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.544.0.tgz#4719953c10fd53a64dd8343bb0ed16ec79f3eeef"
+  integrity sha512-t5tS44bqd825zAW45UQxpG2CvcC4urOwn2TrwSH8u+MjeE+1NnWl6QqeQ/6NdjMqdOygyiT9p3Ev0p1NJykxjw==
 
 magic-string@^0.30.17, magic-string@^0.30.3:
   version "0.30.17"
