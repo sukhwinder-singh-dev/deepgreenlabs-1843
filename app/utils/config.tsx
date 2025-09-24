@@ -5,7 +5,7 @@ import { BottomNavProps, FooterProps, MainNavWidgetProps } from "@orderly.networ
 import { AppLogos } from "@orderly.network/react-app";
 import { OrderlyActiveIcon, OrderlyIcon } from "../components/icons/orderly";
 import { withBasePath } from "./base-path";
-import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon, MarketsActiveIcon, MarketsInactiveIcon } from "@orderly.network/ui";
+import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon, MarketsActiveIcon, MarketsInactiveIcon, useScreen, Flex, cn } from "@orderly.network/ui";
 import { getRuntimeConfig, getRuntimeConfigBoolean, getRuntimeConfigNumber } from "./runtime-config";
 
 interface MainNavItem {
@@ -179,6 +179,7 @@ const getColorConfig = (): ColorConfigInterface | undefined => {
 
 export const useOrderlyConfig = () => {
   const { t } = useTranslation();
+  const { isMobile } = useScreen();
 
   return useMemo<OrderlyConfig>(() => {
     const enabledMenus = getEnabledMenus();
@@ -225,6 +226,35 @@ export const useOrderlyConfig = () => {
         ],
       };
     }
+
+    mainNavProps.customRender = (components) => {
+      return (
+        <Flex justify="between" className="oui-w-full">
+          <Flex
+            itemAlign={"center"}
+            className={cn(
+              "oui-gap-3",
+              "oui-overflow-hidden",
+            )}
+          >
+            {isMobile && getRuntimeConfigBoolean('VITE_HAS_PRIMARY_LOGO')
+              ? <img src={withBasePath("/logo.webp")} alt="logo" style={{ height: "42px" }} />
+              : components.title}
+            {components.mainNav}
+          </Flex>
+
+          <Flex itemAlign={"center"} className="oui-gap-2">
+            {components.accountSummary}
+            {components.linkDevice}
+            {components.scanQRCode}
+            {components.languageSwitcher}
+            {components.subAccount}
+            {components.chainMenu}
+            {components.walletConnect}
+          </Flex>
+        </Flex>
+      )
+    };
 
     return {
       scaffold: {
