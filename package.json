@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "build:spa": "tsx build.ts",
     "dev": "vite",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
