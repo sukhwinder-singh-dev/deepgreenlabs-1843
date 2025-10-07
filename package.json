@@ -8,8 +8,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "vite build",
-    "build:spa": "tsx build.ts",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' vite build",
+    "build:spa": "NODE_OPTIONS='--max-old-space-size=4096' tsx build.ts",
     "dev": "vite",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
