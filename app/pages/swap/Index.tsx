@@ -13,7 +13,7 @@ export default function SwapIndex() {
   return (
     <>
       {renderSEOTags(pageMeta, pageTitle)}
-      <div className="w-full h-full min-h-screen flex items-center justify-center p-4">
+      <div className="w-full h-full flex items-center justify-center p-4 pt-8">
         <Suspense fallback={<LoadingSpinner />}>
           <WooFiWidget />
         </Suspense>
