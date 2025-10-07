@@ -1,9 +1,9 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet } from "react-router-dom";
 import { useOrderlyConfig } from "@/utils/config";
 import { Scaffold } from "@orderly.network/ui-scaffold";
 import { useNav } from "@/hooks/useNav";
 
-export default function MarketsPage() {
+export default function SwapLayout() {
   const config = useOrderlyConfig();
   const { onRouteChange } = useNav();
 
@@ -11,7 +11,7 @@ export default function MarketsPage() {
     <Scaffold
       mainNavProps={{
         ...config.scaffold.mainNavProps,
-        initialMenu: "/markets",
+        initialMenu: "/swap",
       }}
       footerProps={config.scaffold.footerProps}
       routerAdapter={{
@@ -23,3 +23,4 @@ export default function MarketsPage() {
     </Scaffold>
   );
 }
+
