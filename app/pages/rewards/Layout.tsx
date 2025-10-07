@@ -1,42 +1,8 @@
-import { useTradingRewardsLayoutScript } from "@orderly.network/trading-rewards";
-import {
-  Scaffold,
-  type ScaffoldProps,
-  SideBar,
-  useScaffoldContext,
-} from "@orderly.network/ui-scaffold";
-import { Outlet, useLocation } from "react-router-dom";
+import { Scaffold } from "@orderly.network/ui-scaffold";
+import { Outlet } from "react-router-dom";
 
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
-
-const LeftSidebar = (props: ScaffoldProps) => {
-  const { expanded, setExpand } = useScaffoldContext();
-  const location = useLocation();
-  const state = useTradingRewardsLayoutScript({
-    current: location.pathname,
-  });
-  const { onRouteChange } = useNav();
-  return (
-    <SideBar
-      {...state}
-      title={"Rewards"}
-      {...props}
-      open={expanded}
-      items={[
-        ...(state?.items || []),
-      ]}
-      onOpenChange={(open) => setExpand(open)}
-      onItemSelect={(a) => {
-        state.onItemSelect?.(a);
-        onRouteChange?.({
-          href: a.href || "",
-          name: a.name,
-        });
-      }}
-    />
-  );
-};
 
 export default function RewardsLayout() {
   const { onRouteChange } = useNav();
@@ -47,14 +13,11 @@ export default function RewardsLayout() {
       classNames={{
         content: "lg:oui-mb-0",
         topNavbar: "oui-bg-base-9",
-        leftSidebar:
-          "oui-m-3 oui-p-4 oui-border oui-border-[1px] oui-border-line oui-rounded-xl oui-bg-base-9",
       }}
       mainNavProps={{
         ...config.scaffold.mainNavProps,
         initialMenu: "/rewards",
       }}
-      leftSidebar={<LeftSidebar />}
       footerProps={config.scaffold.footerProps}
       routerAdapter={{
         onRouteChange,

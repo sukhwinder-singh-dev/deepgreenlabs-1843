@@ -10,8 +10,8 @@ export default function RewardsIndex() {
   useEffect(() => {
     const searchString = searchParams.toString();
     const redirectPath = searchString 
-      ? `/rewards/trading?${searchString}` 
-      : "/rewards/trading";
+      ? `/rewards/affiliate?${searchString}` 
+      : "/rewards/affiliate";
     
     navigate(redirectPath, { replace: true });
   }, [navigate, searchParams]);

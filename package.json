@@ -22,7 +22,6 @@
     "@orderly.network/react-app": "2.7.4",
     "@orderly.network/trading": "2.7.4",
     "@orderly.network/trading-leaderboard": "2.7.4",
-    "@orderly.network/trading-rewards": "^2.7.4",
     "@orderly.network/types": "2.7.4",
     "@orderly.network/ui": "2.7.4",
     "@orderly.network/ui-scaffold": "2.7.4",

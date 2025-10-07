@@ -26,7 +26,6 @@ const LeaderboardLayout = lazy(() => import('./pages/leaderboard/Layout'));
 const LeaderboardIndex = lazy(() => import('./pages/leaderboard/Index'));
 const RewardsLayout = lazy(() => import('./pages/rewards/Layout'));
 const RewardsIndex = lazy(() => import('./pages/rewards/Index'));
-const RewardsTrading = lazy(() => import('./pages/rewards/Trading'));
 const RewardsAffiliate = lazy(() => import('./pages/rewards/Affiliate'));
 const VaultsLayout = lazy(() => import('./pages/vaults/Layout'));
 const VaultsIndex = lazy(() => import('./pages/vaults/Index'));
@@ -98,7 +97,6 @@ const router = createBrowserRouter([
         element: <RewardsLayout />,
         children: [
           { index: true, element: <RewardsIndex /> },
-          { path: 'trading', element: <RewardsTrading /> },
           { path: 'affiliate', element: <RewardsAffiliate /> },
         ],
       },

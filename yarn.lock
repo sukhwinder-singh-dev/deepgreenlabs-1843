@@ -2943,22 +2943,6 @@
     date-fns "^3.6.0"
     ramda "^0.29.0"
 
-"@orderly.network/trading-rewards@^2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/trading-rewards/-/trading-rewards-2.7.4.tgz#5b545c5d1253538d483f0acb0aeb6133a6f62d7b"
-  integrity sha512-NQNLs3Lt5zMjK3gYUzn7mrJNkbgkJlg+bAd2tEKdVmpCW0vvMm2v/ccBsPRftN2bHzpdLsBENVzzUP6GwaExXQ==
-  dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-scaffold" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
-    date-fns "^3.6.0"
-    ramda "^0.31.3"
-
 "@orderly.network/trading@2.7.4":
   version "2.7.4"
   resolved "https://registry.yarnpkg.com/@orderly.network/trading/-/trading-2.7.4.tgz#99adfac25210c498ded84cd418b0d35d19598ce1"
