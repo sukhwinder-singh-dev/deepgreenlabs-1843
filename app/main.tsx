@@ -48,7 +48,7 @@ async function loadRuntimeConfig() {
   });
 }
 
-const basePath = import.meta.env.PUBLIC_PATH || '/';
+const basePath = import.meta.env.BASE_URL || '/';
 
 const router = createBrowserRouter([
   {
