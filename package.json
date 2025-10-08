@@ -8,10 +8,10 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "NODE_OPTIONS='--max-old-space-size=8192' node scripts/generate-manifest.js && vite build && node scripts/generate-manifest.js",
-    "build:spa": "NODE_OPTIONS='--max-old-space-size=8192' node scripts/generate-manifest.js && tsx build.ts && node scripts/generate-manifest.js",
-    "dev": "node scripts/generate-manifest.js && vite",
-    "generate:manifest": "node scripts/generate-manifest.js",
+    "build": "tsx scripts/generate-manifest.ts && NODE_OPTIONS='--max-old-space-size=8192' vite build && tsx scripts/generate-manifest.ts",
+    "build:spa": "tsx scripts/generate-manifest.ts && NODE_OPTIONS='--max-old-space-size=8192' tsx build.ts && tsx scripts/generate-manifest.ts",
+    "dev": "tsx scripts/generate-manifest.ts && vite",
+    "generate:manifest": "tsx scripts/generate-manifest.ts",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
     "typecheck": "tsc"
